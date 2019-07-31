@@ -9,34 +9,33 @@
 Pod::Spec.new do |s|
   s.name             = 'KbqaHybridSDKiOS'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of KbqaHybridSDKiOS.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.summary          = '香侬KBQA H5SDK'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+香侬KBQA，H5版本SDK
                        DESC
 
-  s.homepage         = 'https://github.com/wang_duo@shannonai.com/KbqaHybridSDKiOS'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/shannontech/KbqaHybridSDKiOS'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'wang_duo@shannonai.com' => 'wmadao11@gmail.com' }
-  s.source           = { :git => 'https://github.com/wang_duo@shannonai.com/KbqaHybridSDKiOS.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { 'shannonai' => 'wmadao11@gmail.com' }
+  s.source           = { :git => "https://github.com/shannontech/KbqaHybridSDKiOS.git", :tag => "#{s.version}" }
 
   s.ios.deployment_target = '8.0'
+  s.platform     = :ios, '8.0'
+  s.requires_arc = true
+  # swift版本
+  s.swift_versions = "5.0"
+
+  # 静态库framework位置
+  s.vendored_frameworks = 'KbqaHybridSDKiOS/*.{framework}'
+
+  #s.frameworks = 'Foundation'
 
   s.source_files = 'KbqaHybridSDKiOS/Classes/**/*'
-  
   # s.resource_bundles = {
   #   'KbqaHybridSDKiOS' => ['KbqaHybridSDKiOS/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

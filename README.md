@@ -1,6 +1,6 @@
 # KbqaHybridSDKiOS
 
-[![CI Status](https://img.shields.io/travis/wang_duo@shannonai.com/KbqaHybridSDKiOS.svg?style=flat)](https://travis-ci.org/wang_duo@shannonai.com/KbqaHybridSDKiOS)
+
 [![Version](https://img.shields.io/cocoapods/v/KbqaHybridSDKiOS.svg?style=flat)](https://cocoapods.org/pods/KbqaHybridSDKiOS)
 [![License](https://img.shields.io/cocoapods/l/KbqaHybridSDKiOS.svg?style=flat)](https://cocoapods.org/pods/KbqaHybridSDKiOS)
 [![Platform](https://img.shields.io/cocoapods/p/KbqaHybridSDKiOS.svg?style=flat)](https://cocoapods.org/pods/KbqaHybridSDKiOS)
