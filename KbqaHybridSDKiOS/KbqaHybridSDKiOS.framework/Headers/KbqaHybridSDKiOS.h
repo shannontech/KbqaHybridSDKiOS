@@ -2,7 +2,7 @@
 //  KbqaHybridSDKiOS.h
 //  KbqaHybridSDKiOS
 //
-//  Created by ys zhou on 2019/7/31.
+//  Created by ys zhou on 2019/8/1.
 //  Copyright © 2019 Shannon.ai. All rights reserved.
 //
 
