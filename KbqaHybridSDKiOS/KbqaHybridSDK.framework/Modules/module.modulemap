@@ -1,0 +1,11 @@
+framework module KbqaHybridSDK {
+  umbrella header "KbqaHybridSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module KbqaHybridSDK.Swift {
+    header "KbqaHybridSDK-Swift.h"
+    requires objc
+}
