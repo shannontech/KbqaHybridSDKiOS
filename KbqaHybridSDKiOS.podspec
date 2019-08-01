@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KbqaHybridSDKiOS'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = '香侬KBQA H5SDK'
 
   s.description      = <<-DESC
