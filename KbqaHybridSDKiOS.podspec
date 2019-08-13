@@ -8,11 +8,11 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KbqaHybridSDKiOS'
-  s.version          = '0.1.3'
-  s.summary          = '香侬KBQA H5SDK'
+  s.version          = '0.1.4'
+  s.summary          = 'Kbqa hybrid SDK'
 
   s.description      = <<-DESC
-香侬KBQA，H5版本SDK
+A Knowledge-Based question answering library for iOS which can give iOS app a smart Q&A function.
                        DESC
 
   s.homepage         = 'https://github.com/shannontech/KbqaHybridSDKiOS'

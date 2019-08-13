@@ -188,34 +188,61 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
-@class KbqaHomeHotSpotBean;
 
-SWIFT_CLASS("_TtC13KbqaHybridSDK21KbqaHomeHotSpotResult")
-@interface KbqaHomeHotSpotResult : NSObject
-@property (nonatomic, copy) NSArray<KbqaHomeHotSpotBean *> * _Nonnull data;
+SWIFT_CLASS("_TtCC13KbqaHybridSDK27KbqaAnnouncementTitleResult20KbqaAnnouncementItem")
+@interface KbqaAnnouncementItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable companyName;
+@property (nonatomic, copy) NSString * _Nullable companyCode;
+@property (nonatomic, copy) NSString * _Nullable link;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
-SWIFT_CLASS("_TtCC13KbqaHybridSDK21KbqaHomeHotSpotResult19KbqaHomeHotSpotBean")
-@interface KbqaHomeHotSpotBean : NSObject
-@property (nonatomic, copy) NSString * _Nonnull question;
+@interface KbqaAnnouncementItem (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK27KbqaAnnouncementTitleResult")
+@interface KbqaAnnouncementTitleResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaAnnouncementItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaAnnouncementTitleResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK17KbqaHotSpotResult15KbqaHotSpotItem")
+@interface KbqaHotSpotItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable question;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaHotSpotItem (SWIFT_EXTENSION(KbqaHybridSDK))
 @property (nonatomic) BOOL isHot;
 @property (nonatomic) BOOL isNew;
 @end
 
-@class KbqaHomeRecommendQuestionBean;
 
-SWIFT_CLASS("_TtC13KbqaHybridSDK31KbqaHomeRecommendQuestionResult")
-@interface KbqaHomeRecommendQuestionResult : NSObject
-@property (nonatomic, copy) NSArray<KbqaHomeRecommendQuestionBean *> * _Nonnull data;
+SWIFT_CLASS("_TtC13KbqaHybridSDK17KbqaHotSpotResult")
+@interface KbqaHotSpotResult : NSObject
+@property (nonatomic, copy) NSArray<KbqaHotSpotItem *> * _Nullable list;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
-SWIFT_CLASS("_TtCC13KbqaHybridSDK31KbqaHomeRecommendQuestionResult29KbqaHomeRecommendQuestionBean")
-@interface KbqaHomeRecommendQuestionBean : NSObject
-@property (nonatomic, copy) NSString * _Nonnull title;
-@property (nonatomic, copy) NSArray<NSString *> * _Nonnull content;
-@end
 
 
 SWIFT_CLASS_NAMED("KbqaLog")
@@ -226,21 +253,120 @@ SWIFT_CLASS_NAMED("KbqaLog")
 @end
 
 
+SWIFT_CLASS("_TtCC13KbqaHybridSDK21KbqaNewsContentResult19KbqaNewsContentItem")
+@interface KbqaNewsContentItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable summary;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable contentField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable dataSource;
+@property (nonatomic, copy) NSString * _Nullable link;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaNewsContentItem (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK21KbqaNewsContentResult")
+@interface KbqaNewsContentResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaNewsContentItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaNewsContentResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
+
+@class KbqaRecommendQuestionItem;
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK27KbqaRecommendQuestionResult")
+@interface KbqaRecommendQuestionResult : NSObject
+@property (nonatomic, copy) NSArray<KbqaRecommendQuestionItem *> * _Nullable list;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK27KbqaRecommendQuestionResult25KbqaRecommendQuestionItem")
+@interface KbqaRecommendQuestionItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable content;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK31KbqaResearchReportFiguresResult29KbqaResearchReportFiguresItem")
+@interface KbqaResearchReportFiguresItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable contentField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable body;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable header;
+@property (nonatomic, copy) NSString * _Nullable dataSource;
+@property (nonatomic, copy) NSString * _Nullable link;
+@property (nonatomic, copy) NSString * _Nullable figureUrl;
+@property (nonatomic, copy) NSString * _Nullable figurePath;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaResearchReportFiguresItem (SWIFT_EXTENSION(KbqaHybridSDK))
+/// page is <code>Int?</code> in Swift and <code>(NSNumber * _Nullable)</code> in Objective-C
+@property (nonatomic) NSInteger page;
+@property (nonatomic) NSInteger figureId;
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK31KbqaResearchReportFiguresResult")
+@interface KbqaResearchReportFiguresResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaResearchReportFiguresItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaResearchReportFiguresResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
+
+@class KbqaSuggestQuestionResult;
+@class KbqaWechatSubscriptionContentResult;
+
 SWIFT_CLASS_NAMED("KbqaSDKHybrid")
 @interface KbqaSDKHybrid : NSObject
-@property (nonatomic, copy) NSString * _Nonnull kbqaToken;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybrid * _Nonnull sharedInstance;)
-+ (KbqaSDKHybrid * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybrid * _Nonnull sharedInstance;)
++ (KbqaSDKHybrid * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret SWIFT_METHOD_FAMILY(none);
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock SWIFT_METHOD_FAMILY(none);
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock kbqaLog:(KbqaLog * _Nullable)kbqaLog SWIFT_METHOD_FAMILY(none);
 - (NSString * _Nonnull)getRequestUrlWithQuestion:(NSString * _Nonnull)question SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)checkInit SWIFT_WARN_UNUSED_RESULT;
-- (void)getInuputSuggestionsWithMaxCount:(NSInteger)maxCount inputString:(NSString * _Nonnull)inputString getSuggestQuestionBlock:(void (^ _Nullable)(NSArray<NSString *> * _Nonnull))getSuggestQuestionBlock;
-- (void)getHomeRecommendQuestionWithGetHomeRecommendQuestionBlock:(void (^ _Nullable)(KbqaHomeRecommendQuestionResult * _Nonnull))getHomeRecommendQuestionBlock;
-- (void)getHomeHotSpotWithGetHomeHotSpotBlock:(void (^ _Nullable)(KbqaHomeHotSpotResult * _Nonnull))getHomeHotSpotBlock;
+- (void)getInputSuggestionsWithMaxCount:(NSInteger)maxCount inputString:(NSString * _Nonnull)inputString getSuggestQuestionBlock:(void (^ _Nullable)(KbqaSuggestQuestionResult * _Nonnull))getSuggestQuestionBlock;
+- (void)getRecommendQuestionWithGetRecommendQuestionBlock:(void (^ _Nullable)(KbqaRecommendQuestionResult * _Nonnull))getRecommendQuestionBlock;
+- (void)getHotSpotWithGetHotSpotBlock:(void (^ _Nullable)(KbqaHotSpotResult * _Nonnull))getHotSpotBlock;
+- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
+- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
+- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
+- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
 @end
 
 
@@ -248,6 +374,49 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybri
 
 
 
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK25KbqaSuggestQuestionResult")
+@interface KbqaSuggestQuestionResult : NSObject
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable list;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK35KbqaWechatSubscriptionContentResult33KbqaWechatSubscriptionContentItem")
+@interface KbqaWechatSubscriptionContentItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable summary;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable contentField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable link;
+@property (nonatomic, copy) NSString * _Nullable nickname;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaWechatSubscriptionContentItem (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK35KbqaWechatSubscriptionContentResult")
+@interface KbqaWechatSubscriptionContentResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaWechatSubscriptionContentItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaWechatSubscriptionContentResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
@@ -441,34 +610,61 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
-@class KbqaHomeHotSpotBean;
 
-SWIFT_CLASS("_TtC13KbqaHybridSDK21KbqaHomeHotSpotResult")
-@interface KbqaHomeHotSpotResult : NSObject
-@property (nonatomic, copy) NSArray<KbqaHomeHotSpotBean *> * _Nonnull data;
+SWIFT_CLASS("_TtCC13KbqaHybridSDK27KbqaAnnouncementTitleResult20KbqaAnnouncementItem")
+@interface KbqaAnnouncementItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable companyName;
+@property (nonatomic, copy) NSString * _Nullable companyCode;
+@property (nonatomic, copy) NSString * _Nullable link;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
-SWIFT_CLASS("_TtCC13KbqaHybridSDK21KbqaHomeHotSpotResult19KbqaHomeHotSpotBean")
-@interface KbqaHomeHotSpotBean : NSObject
-@property (nonatomic, copy) NSString * _Nonnull question;
+@interface KbqaAnnouncementItem (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK27KbqaAnnouncementTitleResult")
+@interface KbqaAnnouncementTitleResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaAnnouncementItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaAnnouncementTitleResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK17KbqaHotSpotResult15KbqaHotSpotItem")
+@interface KbqaHotSpotItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable question;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaHotSpotItem (SWIFT_EXTENSION(KbqaHybridSDK))
 @property (nonatomic) BOOL isHot;
 @property (nonatomic) BOOL isNew;
 @end
 
-@class KbqaHomeRecommendQuestionBean;
 
-SWIFT_CLASS("_TtC13KbqaHybridSDK31KbqaHomeRecommendQuestionResult")
-@interface KbqaHomeRecommendQuestionResult : NSObject
-@property (nonatomic, copy) NSArray<KbqaHomeRecommendQuestionBean *> * _Nonnull data;
+SWIFT_CLASS("_TtC13KbqaHybridSDK17KbqaHotSpotResult")
+@interface KbqaHotSpotResult : NSObject
+@property (nonatomic, copy) NSArray<KbqaHotSpotItem *> * _Nullable list;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
-SWIFT_CLASS("_TtCC13KbqaHybridSDK31KbqaHomeRecommendQuestionResult29KbqaHomeRecommendQuestionBean")
-@interface KbqaHomeRecommendQuestionBean : NSObject
-@property (nonatomic, copy) NSString * _Nonnull title;
-@property (nonatomic, copy) NSArray<NSString *> * _Nonnull content;
-@end
 
 
 SWIFT_CLASS_NAMED("KbqaLog")
@@ -479,21 +675,120 @@ SWIFT_CLASS_NAMED("KbqaLog")
 @end
 
 
+SWIFT_CLASS("_TtCC13KbqaHybridSDK21KbqaNewsContentResult19KbqaNewsContentItem")
+@interface KbqaNewsContentItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable summary;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable contentField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable dataSource;
+@property (nonatomic, copy) NSString * _Nullable link;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaNewsContentItem (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK21KbqaNewsContentResult")
+@interface KbqaNewsContentResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaNewsContentItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaNewsContentResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
+
+@class KbqaRecommendQuestionItem;
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK27KbqaRecommendQuestionResult")
+@interface KbqaRecommendQuestionResult : NSObject
+@property (nonatomic, copy) NSArray<KbqaRecommendQuestionItem *> * _Nullable list;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK27KbqaRecommendQuestionResult25KbqaRecommendQuestionItem")
+@interface KbqaRecommendQuestionItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable content;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK31KbqaResearchReportFiguresResult29KbqaResearchReportFiguresItem")
+@interface KbqaResearchReportFiguresItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable contentField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable body;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable header;
+@property (nonatomic, copy) NSString * _Nullable dataSource;
+@property (nonatomic, copy) NSString * _Nullable link;
+@property (nonatomic, copy) NSString * _Nullable figureUrl;
+@property (nonatomic, copy) NSString * _Nullable figurePath;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaResearchReportFiguresItem (SWIFT_EXTENSION(KbqaHybridSDK))
+/// page is <code>Int?</code> in Swift and <code>(NSNumber * _Nullable)</code> in Objective-C
+@property (nonatomic) NSInteger page;
+@property (nonatomic) NSInteger figureId;
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK31KbqaResearchReportFiguresResult")
+@interface KbqaResearchReportFiguresResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaResearchReportFiguresItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaResearchReportFiguresResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
+
+@class KbqaSuggestQuestionResult;
+@class KbqaWechatSubscriptionContentResult;
+
 SWIFT_CLASS_NAMED("KbqaSDKHybrid")
 @interface KbqaSDKHybrid : NSObject
-@property (nonatomic, copy) NSString * _Nonnull kbqaToken;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybrid * _Nonnull sharedInstance;)
-+ (KbqaSDKHybrid * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybrid * _Nonnull sharedInstance;)
++ (KbqaSDKHybrid * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret SWIFT_METHOD_FAMILY(none);
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock SWIFT_METHOD_FAMILY(none);
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock kbqaLog:(KbqaLog * _Nullable)kbqaLog SWIFT_METHOD_FAMILY(none);
 - (NSString * _Nonnull)getRequestUrlWithQuestion:(NSString * _Nonnull)question SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)checkInit SWIFT_WARN_UNUSED_RESULT;
-- (void)getInuputSuggestionsWithMaxCount:(NSInteger)maxCount inputString:(NSString * _Nonnull)inputString getSuggestQuestionBlock:(void (^ _Nullable)(NSArray<NSString *> * _Nonnull))getSuggestQuestionBlock;
-- (void)getHomeRecommendQuestionWithGetHomeRecommendQuestionBlock:(void (^ _Nullable)(KbqaHomeRecommendQuestionResult * _Nonnull))getHomeRecommendQuestionBlock;
-- (void)getHomeHotSpotWithGetHomeHotSpotBlock:(void (^ _Nullable)(KbqaHomeHotSpotResult * _Nonnull))getHomeHotSpotBlock;
+- (void)getInputSuggestionsWithMaxCount:(NSInteger)maxCount inputString:(NSString * _Nonnull)inputString getSuggestQuestionBlock:(void (^ _Nullable)(KbqaSuggestQuestionResult * _Nonnull))getSuggestQuestionBlock;
+- (void)getRecommendQuestionWithGetRecommendQuestionBlock:(void (^ _Nullable)(KbqaRecommendQuestionResult * _Nonnull))getRecommendQuestionBlock;
+- (void)getHotSpotWithGetHotSpotBlock:(void (^ _Nullable)(KbqaHotSpotResult * _Nonnull))getHotSpotBlock;
+- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
+- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
+- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
+- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
 @end
 
 
@@ -501,6 +796,49 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybri
 
 
 
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK25KbqaSuggestQuestionResult")
+@interface KbqaSuggestQuestionResult : NSObject
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable list;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK35KbqaWechatSubscriptionContentResult33KbqaWechatSubscriptionContentItem")
+@interface KbqaWechatSubscriptionContentItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable summary;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable contentField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable link;
+@property (nonatomic, copy) NSString * _Nullable nickname;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaWechatSubscriptionContentItem (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK35KbqaWechatSubscriptionContentResult")
+@interface KbqaWechatSubscriptionContentResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaWechatSubscriptionContentItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaWechatSubscriptionContentResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
@@ -698,34 +1036,61 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
-@class KbqaHomeHotSpotBean;
 
-SWIFT_CLASS("_TtC13KbqaHybridSDK21KbqaHomeHotSpotResult")
-@interface KbqaHomeHotSpotResult : NSObject
-@property (nonatomic, copy) NSArray<KbqaHomeHotSpotBean *> * _Nonnull data;
+SWIFT_CLASS("_TtCC13KbqaHybridSDK27KbqaAnnouncementTitleResult20KbqaAnnouncementItem")
+@interface KbqaAnnouncementItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable companyName;
+@property (nonatomic, copy) NSString * _Nullable companyCode;
+@property (nonatomic, copy) NSString * _Nullable link;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
-SWIFT_CLASS("_TtCC13KbqaHybridSDK21KbqaHomeHotSpotResult19KbqaHomeHotSpotBean")
-@interface KbqaHomeHotSpotBean : NSObject
-@property (nonatomic, copy) NSString * _Nonnull question;
+@interface KbqaAnnouncementItem (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK27KbqaAnnouncementTitleResult")
+@interface KbqaAnnouncementTitleResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaAnnouncementItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaAnnouncementTitleResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK17KbqaHotSpotResult15KbqaHotSpotItem")
+@interface KbqaHotSpotItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable question;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaHotSpotItem (SWIFT_EXTENSION(KbqaHybridSDK))
 @property (nonatomic) BOOL isHot;
 @property (nonatomic) BOOL isNew;
 @end
 
-@class KbqaHomeRecommendQuestionBean;
 
-SWIFT_CLASS("_TtC13KbqaHybridSDK31KbqaHomeRecommendQuestionResult")
-@interface KbqaHomeRecommendQuestionResult : NSObject
-@property (nonatomic, copy) NSArray<KbqaHomeRecommendQuestionBean *> * _Nonnull data;
+SWIFT_CLASS("_TtC13KbqaHybridSDK17KbqaHotSpotResult")
+@interface KbqaHotSpotResult : NSObject
+@property (nonatomic, copy) NSArray<KbqaHotSpotItem *> * _Nullable list;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
-SWIFT_CLASS("_TtCC13KbqaHybridSDK31KbqaHomeRecommendQuestionResult29KbqaHomeRecommendQuestionBean")
-@interface KbqaHomeRecommendQuestionBean : NSObject
-@property (nonatomic, copy) NSString * _Nonnull title;
-@property (nonatomic, copy) NSArray<NSString *> * _Nonnull content;
-@end
 
 
 SWIFT_CLASS_NAMED("KbqaLog")
@@ -736,21 +1101,120 @@ SWIFT_CLASS_NAMED("KbqaLog")
 @end
 
 
+SWIFT_CLASS("_TtCC13KbqaHybridSDK21KbqaNewsContentResult19KbqaNewsContentItem")
+@interface KbqaNewsContentItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable summary;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable contentField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable dataSource;
+@property (nonatomic, copy) NSString * _Nullable link;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaNewsContentItem (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK21KbqaNewsContentResult")
+@interface KbqaNewsContentResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaNewsContentItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaNewsContentResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
+
+@class KbqaRecommendQuestionItem;
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK27KbqaRecommendQuestionResult")
+@interface KbqaRecommendQuestionResult : NSObject
+@property (nonatomic, copy) NSArray<KbqaRecommendQuestionItem *> * _Nullable list;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK27KbqaRecommendQuestionResult25KbqaRecommendQuestionItem")
+@interface KbqaRecommendQuestionItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable content;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK31KbqaResearchReportFiguresResult29KbqaResearchReportFiguresItem")
+@interface KbqaResearchReportFiguresItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable contentField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable body;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable header;
+@property (nonatomic, copy) NSString * _Nullable dataSource;
+@property (nonatomic, copy) NSString * _Nullable link;
+@property (nonatomic, copy) NSString * _Nullable figureUrl;
+@property (nonatomic, copy) NSString * _Nullable figurePath;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaResearchReportFiguresItem (SWIFT_EXTENSION(KbqaHybridSDK))
+/// page is <code>Int?</code> in Swift and <code>(NSNumber * _Nullable)</code> in Objective-C
+@property (nonatomic) NSInteger page;
+@property (nonatomic) NSInteger figureId;
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK31KbqaResearchReportFiguresResult")
+@interface KbqaResearchReportFiguresResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaResearchReportFiguresItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaResearchReportFiguresResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
+
+@class KbqaSuggestQuestionResult;
+@class KbqaWechatSubscriptionContentResult;
+
 SWIFT_CLASS_NAMED("KbqaSDKHybrid")
 @interface KbqaSDKHybrid : NSObject
-@property (nonatomic, copy) NSString * _Nonnull kbqaToken;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybrid * _Nonnull sharedInstance;)
-+ (KbqaSDKHybrid * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybrid * _Nonnull sharedInstance;)
++ (KbqaSDKHybrid * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret SWIFT_METHOD_FAMILY(none);
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock SWIFT_METHOD_FAMILY(none);
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock kbqaLog:(KbqaLog * _Nullable)kbqaLog SWIFT_METHOD_FAMILY(none);
 - (NSString * _Nonnull)getRequestUrlWithQuestion:(NSString * _Nonnull)question SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)checkInit SWIFT_WARN_UNUSED_RESULT;
-- (void)getInuputSuggestionsWithMaxCount:(NSInteger)maxCount inputString:(NSString * _Nonnull)inputString getSuggestQuestionBlock:(void (^ _Nullable)(NSArray<NSString *> * _Nonnull))getSuggestQuestionBlock;
-- (void)getHomeRecommendQuestionWithGetHomeRecommendQuestionBlock:(void (^ _Nullable)(KbqaHomeRecommendQuestionResult * _Nonnull))getHomeRecommendQuestionBlock;
-- (void)getHomeHotSpotWithGetHomeHotSpotBlock:(void (^ _Nullable)(KbqaHomeHotSpotResult * _Nonnull))getHomeHotSpotBlock;
+- (void)getInputSuggestionsWithMaxCount:(NSInteger)maxCount inputString:(NSString * _Nonnull)inputString getSuggestQuestionBlock:(void (^ _Nullable)(KbqaSuggestQuestionResult * _Nonnull))getSuggestQuestionBlock;
+- (void)getRecommendQuestionWithGetRecommendQuestionBlock:(void (^ _Nullable)(KbqaRecommendQuestionResult * _Nonnull))getRecommendQuestionBlock;
+- (void)getHotSpotWithGetHotSpotBlock:(void (^ _Nullable)(KbqaHotSpotResult * _Nonnull))getHotSpotBlock;
+- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
+- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
+- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
+- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
 @end
 
 
@@ -758,6 +1222,49 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybri
 
 
 
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK25KbqaSuggestQuestionResult")
+@interface KbqaSuggestQuestionResult : NSObject
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable list;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK35KbqaWechatSubscriptionContentResult33KbqaWechatSubscriptionContentItem")
+@interface KbqaWechatSubscriptionContentItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable summary;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable contentField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable link;
+@property (nonatomic, copy) NSString * _Nullable nickname;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaWechatSubscriptionContentItem (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK35KbqaWechatSubscriptionContentResult")
+@interface KbqaWechatSubscriptionContentResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaWechatSubscriptionContentItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaWechatSubscriptionContentResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
@@ -951,34 +1458,61 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
-@class KbqaHomeHotSpotBean;
 
-SWIFT_CLASS("_TtC13KbqaHybridSDK21KbqaHomeHotSpotResult")
-@interface KbqaHomeHotSpotResult : NSObject
-@property (nonatomic, copy) NSArray<KbqaHomeHotSpotBean *> * _Nonnull data;
+SWIFT_CLASS("_TtCC13KbqaHybridSDK27KbqaAnnouncementTitleResult20KbqaAnnouncementItem")
+@interface KbqaAnnouncementItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable companyName;
+@property (nonatomic, copy) NSString * _Nullable companyCode;
+@property (nonatomic, copy) NSString * _Nullable link;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
-SWIFT_CLASS("_TtCC13KbqaHybridSDK21KbqaHomeHotSpotResult19KbqaHomeHotSpotBean")
-@interface KbqaHomeHotSpotBean : NSObject
-@property (nonatomic, copy) NSString * _Nonnull question;
+@interface KbqaAnnouncementItem (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK27KbqaAnnouncementTitleResult")
+@interface KbqaAnnouncementTitleResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaAnnouncementItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaAnnouncementTitleResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK17KbqaHotSpotResult15KbqaHotSpotItem")
+@interface KbqaHotSpotItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable question;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaHotSpotItem (SWIFT_EXTENSION(KbqaHybridSDK))
 @property (nonatomic) BOOL isHot;
 @property (nonatomic) BOOL isNew;
 @end
 
-@class KbqaHomeRecommendQuestionBean;
 
-SWIFT_CLASS("_TtC13KbqaHybridSDK31KbqaHomeRecommendQuestionResult")
-@interface KbqaHomeRecommendQuestionResult : NSObject
-@property (nonatomic, copy) NSArray<KbqaHomeRecommendQuestionBean *> * _Nonnull data;
+SWIFT_CLASS("_TtC13KbqaHybridSDK17KbqaHotSpotResult")
+@interface KbqaHotSpotResult : NSObject
+@property (nonatomic, copy) NSArray<KbqaHotSpotItem *> * _Nullable list;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
-SWIFT_CLASS("_TtCC13KbqaHybridSDK31KbqaHomeRecommendQuestionResult29KbqaHomeRecommendQuestionBean")
-@interface KbqaHomeRecommendQuestionBean : NSObject
-@property (nonatomic, copy) NSString * _Nonnull title;
-@property (nonatomic, copy) NSArray<NSString *> * _Nonnull content;
-@end
 
 
 SWIFT_CLASS_NAMED("KbqaLog")
@@ -989,21 +1523,120 @@ SWIFT_CLASS_NAMED("KbqaLog")
 @end
 
 
+SWIFT_CLASS("_TtCC13KbqaHybridSDK21KbqaNewsContentResult19KbqaNewsContentItem")
+@interface KbqaNewsContentItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable summary;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable contentField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable dataSource;
+@property (nonatomic, copy) NSString * _Nullable link;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaNewsContentItem (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK21KbqaNewsContentResult")
+@interface KbqaNewsContentResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaNewsContentItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaNewsContentResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
+
+@class KbqaRecommendQuestionItem;
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK27KbqaRecommendQuestionResult")
+@interface KbqaRecommendQuestionResult : NSObject
+@property (nonatomic, copy) NSArray<KbqaRecommendQuestionItem *> * _Nullable list;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK27KbqaRecommendQuestionResult25KbqaRecommendQuestionItem")
+@interface KbqaRecommendQuestionItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable content;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK31KbqaResearchReportFiguresResult29KbqaResearchReportFiguresItem")
+@interface KbqaResearchReportFiguresItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable contentField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable body;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable header;
+@property (nonatomic, copy) NSString * _Nullable dataSource;
+@property (nonatomic, copy) NSString * _Nullable link;
+@property (nonatomic, copy) NSString * _Nullable figureUrl;
+@property (nonatomic, copy) NSString * _Nullable figurePath;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaResearchReportFiguresItem (SWIFT_EXTENSION(KbqaHybridSDK))
+/// page is <code>Int?</code> in Swift and <code>(NSNumber * _Nullable)</code> in Objective-C
+@property (nonatomic) NSInteger page;
+@property (nonatomic) NSInteger figureId;
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK31KbqaResearchReportFiguresResult")
+@interface KbqaResearchReportFiguresResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaResearchReportFiguresItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaResearchReportFiguresResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
+
+@class KbqaSuggestQuestionResult;
+@class KbqaWechatSubscriptionContentResult;
+
 SWIFT_CLASS_NAMED("KbqaSDKHybrid")
 @interface KbqaSDKHybrid : NSObject
-@property (nonatomic, copy) NSString * _Nonnull kbqaToken;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybrid * _Nonnull sharedInstance;)
-+ (KbqaSDKHybrid * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybrid * _Nonnull sharedInstance;)
++ (KbqaSDKHybrid * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret SWIFT_METHOD_FAMILY(none);
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock SWIFT_METHOD_FAMILY(none);
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock kbqaLog:(KbqaLog * _Nullable)kbqaLog SWIFT_METHOD_FAMILY(none);
 - (NSString * _Nonnull)getRequestUrlWithQuestion:(NSString * _Nonnull)question SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)checkInit SWIFT_WARN_UNUSED_RESULT;
-- (void)getInuputSuggestionsWithMaxCount:(NSInteger)maxCount inputString:(NSString * _Nonnull)inputString getSuggestQuestionBlock:(void (^ _Nullable)(NSArray<NSString *> * _Nonnull))getSuggestQuestionBlock;
-- (void)getHomeRecommendQuestionWithGetHomeRecommendQuestionBlock:(void (^ _Nullable)(KbqaHomeRecommendQuestionResult * _Nonnull))getHomeRecommendQuestionBlock;
-- (void)getHomeHotSpotWithGetHomeHotSpotBlock:(void (^ _Nullable)(KbqaHomeHotSpotResult * _Nonnull))getHomeHotSpotBlock;
+- (void)getInputSuggestionsWithMaxCount:(NSInteger)maxCount inputString:(NSString * _Nonnull)inputString getSuggestQuestionBlock:(void (^ _Nullable)(KbqaSuggestQuestionResult * _Nonnull))getSuggestQuestionBlock;
+- (void)getRecommendQuestionWithGetRecommendQuestionBlock:(void (^ _Nullable)(KbqaRecommendQuestionResult * _Nonnull))getRecommendQuestionBlock;
+- (void)getHotSpotWithGetHotSpotBlock:(void (^ _Nullable)(KbqaHotSpotResult * _Nonnull))getHotSpotBlock;
+- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
+- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
+- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
+- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
 @end
 
 
@@ -1011,6 +1644,49 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybri
 
 
 
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK25KbqaSuggestQuestionResult")
+@interface KbqaSuggestQuestionResult : NSObject
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable list;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK35KbqaWechatSubscriptionContentResult33KbqaWechatSubscriptionContentItem")
+@interface KbqaWechatSubscriptionContentItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable summary;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable contentField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable link;
+@property (nonatomic, copy) NSString * _Nullable nickname;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaWechatSubscriptionContentItem (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK35KbqaWechatSubscriptionContentResult")
+@interface KbqaWechatSubscriptionContentResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaWechatSubscriptionContentItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaWechatSubscriptionContentResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
@@ -1204,34 +1880,61 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
-@class KbqaHomeHotSpotBean;
 
-SWIFT_CLASS("_TtC13KbqaHybridSDK21KbqaHomeHotSpotResult")
-@interface KbqaHomeHotSpotResult : NSObject
-@property (nonatomic, copy) NSArray<KbqaHomeHotSpotBean *> * _Nonnull data;
+SWIFT_CLASS("_TtCC13KbqaHybridSDK27KbqaAnnouncementTitleResult20KbqaAnnouncementItem")
+@interface KbqaAnnouncementItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable companyName;
+@property (nonatomic, copy) NSString * _Nullable companyCode;
+@property (nonatomic, copy) NSString * _Nullable link;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
-SWIFT_CLASS("_TtCC13KbqaHybridSDK21KbqaHomeHotSpotResult19KbqaHomeHotSpotBean")
-@interface KbqaHomeHotSpotBean : NSObject
-@property (nonatomic, copy) NSString * _Nonnull question;
+@interface KbqaAnnouncementItem (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK27KbqaAnnouncementTitleResult")
+@interface KbqaAnnouncementTitleResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaAnnouncementItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaAnnouncementTitleResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK17KbqaHotSpotResult15KbqaHotSpotItem")
+@interface KbqaHotSpotItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable question;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaHotSpotItem (SWIFT_EXTENSION(KbqaHybridSDK))
 @property (nonatomic) BOOL isHot;
 @property (nonatomic) BOOL isNew;
 @end
 
-@class KbqaHomeRecommendQuestionBean;
 
-SWIFT_CLASS("_TtC13KbqaHybridSDK31KbqaHomeRecommendQuestionResult")
-@interface KbqaHomeRecommendQuestionResult : NSObject
-@property (nonatomic, copy) NSArray<KbqaHomeRecommendQuestionBean *> * _Nonnull data;
+SWIFT_CLASS("_TtC13KbqaHybridSDK17KbqaHotSpotResult")
+@interface KbqaHotSpotResult : NSObject
+@property (nonatomic, copy) NSArray<KbqaHotSpotItem *> * _Nullable list;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
-SWIFT_CLASS("_TtCC13KbqaHybridSDK31KbqaHomeRecommendQuestionResult29KbqaHomeRecommendQuestionBean")
-@interface KbqaHomeRecommendQuestionBean : NSObject
-@property (nonatomic, copy) NSString * _Nonnull title;
-@property (nonatomic, copy) NSArray<NSString *> * _Nonnull content;
-@end
 
 
 SWIFT_CLASS_NAMED("KbqaLog")
@@ -1242,21 +1945,120 @@ SWIFT_CLASS_NAMED("KbqaLog")
 @end
 
 
+SWIFT_CLASS("_TtCC13KbqaHybridSDK21KbqaNewsContentResult19KbqaNewsContentItem")
+@interface KbqaNewsContentItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable summary;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable contentField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable dataSource;
+@property (nonatomic, copy) NSString * _Nullable link;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaNewsContentItem (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK21KbqaNewsContentResult")
+@interface KbqaNewsContentResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaNewsContentItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaNewsContentResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
+
+@class KbqaRecommendQuestionItem;
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK27KbqaRecommendQuestionResult")
+@interface KbqaRecommendQuestionResult : NSObject
+@property (nonatomic, copy) NSArray<KbqaRecommendQuestionItem *> * _Nullable list;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK27KbqaRecommendQuestionResult25KbqaRecommendQuestionItem")
+@interface KbqaRecommendQuestionItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable content;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK31KbqaResearchReportFiguresResult29KbqaResearchReportFiguresItem")
+@interface KbqaResearchReportFiguresItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable contentField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable body;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable header;
+@property (nonatomic, copy) NSString * _Nullable dataSource;
+@property (nonatomic, copy) NSString * _Nullable link;
+@property (nonatomic, copy) NSString * _Nullable figureUrl;
+@property (nonatomic, copy) NSString * _Nullable figurePath;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaResearchReportFiguresItem (SWIFT_EXTENSION(KbqaHybridSDK))
+/// page is <code>Int?</code> in Swift and <code>(NSNumber * _Nullable)</code> in Objective-C
+@property (nonatomic) NSInteger page;
+@property (nonatomic) NSInteger figureId;
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK31KbqaResearchReportFiguresResult")
+@interface KbqaResearchReportFiguresResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaResearchReportFiguresItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaResearchReportFiguresResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
+
+@class KbqaSuggestQuestionResult;
+@class KbqaWechatSubscriptionContentResult;
+
 SWIFT_CLASS_NAMED("KbqaSDKHybrid")
 @interface KbqaSDKHybrid : NSObject
-@property (nonatomic, copy) NSString * _Nonnull kbqaToken;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybrid * _Nonnull sharedInstance;)
-+ (KbqaSDKHybrid * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybrid * _Nonnull sharedInstance;)
++ (KbqaSDKHybrid * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret SWIFT_METHOD_FAMILY(none);
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock SWIFT_METHOD_FAMILY(none);
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock kbqaLog:(KbqaLog * _Nullable)kbqaLog SWIFT_METHOD_FAMILY(none);
 - (NSString * _Nonnull)getRequestUrlWithQuestion:(NSString * _Nonnull)question SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)checkInit SWIFT_WARN_UNUSED_RESULT;
-- (void)getInuputSuggestionsWithMaxCount:(NSInteger)maxCount inputString:(NSString * _Nonnull)inputString getSuggestQuestionBlock:(void (^ _Nullable)(NSArray<NSString *> * _Nonnull))getSuggestQuestionBlock;
-- (void)getHomeRecommendQuestionWithGetHomeRecommendQuestionBlock:(void (^ _Nullable)(KbqaHomeRecommendQuestionResult * _Nonnull))getHomeRecommendQuestionBlock;
-- (void)getHomeHotSpotWithGetHomeHotSpotBlock:(void (^ _Nullable)(KbqaHomeHotSpotResult * _Nonnull))getHomeHotSpotBlock;
+- (void)getInputSuggestionsWithMaxCount:(NSInteger)maxCount inputString:(NSString * _Nonnull)inputString getSuggestQuestionBlock:(void (^ _Nullable)(KbqaSuggestQuestionResult * _Nonnull))getSuggestQuestionBlock;
+- (void)getRecommendQuestionWithGetRecommendQuestionBlock:(void (^ _Nullable)(KbqaRecommendQuestionResult * _Nonnull))getRecommendQuestionBlock;
+- (void)getHotSpotWithGetHotSpotBlock:(void (^ _Nullable)(KbqaHotSpotResult * _Nonnull))getHotSpotBlock;
+- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
+- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
+- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
+- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
 @end
 
 
@@ -1264,6 +2066,49 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybri
 
 
 
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK25KbqaSuggestQuestionResult")
+@interface KbqaSuggestQuestionResult : NSObject
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable list;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtCC13KbqaHybridSDK35KbqaWechatSubscriptionContentResult33KbqaWechatSubscriptionContentItem")
+@interface KbqaWechatSubscriptionContentItem : NSObject
+@property (nonatomic, copy) NSString * _Nullable indexCategory;
+@property (nonatomic, copy) NSString * _Nullable _id;
+@property (nonatomic, copy) NSString * _Nullable date;
+@property (nonatomic, copy) NSString * _Nullable summary;
+@property (nonatomic, copy) NSString * _Nullable titleField;
+@property (nonatomic, copy) NSString * _Nullable contentField;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable link;
+@property (nonatomic, copy) NSString * _Nullable nickname;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface KbqaWechatSubscriptionContentItem (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) float chunkScore;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK35KbqaWechatSubscriptionContentResult")
+@interface KbqaWechatSubscriptionContentResult : NSObject
+@property (nonatomic, copy) NSString * _Nullable responseID;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable highlight;
+@property (nonatomic, copy) NSString * _Nullable question;
+@property (nonatomic, copy) NSArray<KbqaWechatSubscriptionContentItem *> * _Nullable pageItems;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@interface KbqaWechatSubscriptionContentResult (SWIFT_EXTENSION(KbqaHybridSDK))
+@property (nonatomic) NSInteger totalCount;
+@end
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
