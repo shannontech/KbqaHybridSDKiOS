@@ -223,6 +223,30 @@ SWIFT_CLASS("_TtC13KbqaHybridSDK27KbqaAnnouncementTitleResult")
 @property (nonatomic) NSInteger totalCount;
 @end
 
+@class KbqaLog;
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK17KbqaConfiguration")
+@interface KbqaConfiguration : NSObject
+- (KbqaConfiguration * _Nonnull)setConnectTimeoutWithRequestTimeoutInterval:(double)requestTimeoutInterval SWIFT_WARN_UNUSED_RESULT;
+- (KbqaConfiguration * _Nonnull)setSearchUrlWithSearchUrl:(NSString * _Nonnull)searchUrl SWIFT_WARN_UNUSED_RESULT;
+- (KbqaConfiguration * _Nonnull)setKbqaLogWithKbqaLog:(KbqaLog * _Nonnull)kbqaLog SWIFT_WARN_UNUSED_RESULT;
+- (double)getRequestTimeoutInterval SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)getSearchUrl SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK14KbqaFilterBean")
+@interface KbqaFilterBean : NSObject
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable date;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable category;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable institution;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable industry;
+- (nonnull instancetype)initWithDate:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 
 SWIFT_CLASS("_TtCC13KbqaHybridSDK17KbqaHotSpotResult15KbqaHotSpotItem")
 @interface KbqaHotSpotItem : NSObject
@@ -305,6 +329,19 @@ SWIFT_CLASS("_TtCC13KbqaHybridSDK27KbqaRecommendQuestionResult25KbqaRecommendQue
 @end
 
 
+SWIFT_CLASS("_TtC13KbqaHybridSDK25KbqaRelativeQuestionsBean")
+@interface KbqaRelativeQuestionsBean : NSObject
+@property (nonatomic, copy) NSString * _Nonnull question;
+@property (nonatomic, copy) NSString * _Nonnull type;
+@property (nonatomic) NSInteger pageNum;
+@property (nonatomic) NSInteger pageSize;
+@property (nonatomic, strong) KbqaFilterBean * _Nullable filter;
+- (nonnull instancetype)init:(NSString * _Nonnull)question :(NSString * _Nonnull)type :(NSInteger)pageNum :(NSInteger)pageSize :(KbqaFilterBean * _Nullable)filter OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS("_TtCC13KbqaHybridSDK31KbqaResearchReportFiguresResult29KbqaResearchReportFiguresItem")
 @interface KbqaResearchReportFiguresItem : NSObject
 @property (nonatomic, copy) NSString * _Nullable indexCategory;
@@ -355,18 +392,22 @@ SWIFT_CLASS_NAMED("KbqaSDKHybrid")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybrid * _Nonnull sharedInstance;)
 + (KbqaSDKHybrid * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, strong) KbqaConfiguration * _Nonnull kbqaConfiguration;
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret SWIFT_METHOD_FAMILY(none);
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock SWIFT_METHOD_FAMILY(none);
-- (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock kbqaLog:(KbqaLog * _Nullable)kbqaLog SWIFT_METHOD_FAMILY(none);
 - (NSString * _Nonnull)getRequestUrlWithQuestion:(NSString * _Nonnull)question SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)checkInit SWIFT_WARN_UNUSED_RESULT;
 - (void)getInputSuggestionsWithMaxCount:(NSInteger)maxCount inputString:(NSString * _Nonnull)inputString getSuggestQuestionBlock:(void (^ _Nullable)(KbqaSuggestQuestionResult * _Nonnull))getSuggestQuestionBlock;
 - (void)getRecommendQuestionWithGetRecommendQuestionBlock:(void (^ _Nullable)(KbqaRecommendQuestionResult * _Nonnull))getRecommendQuestionBlock;
 - (void)getHotSpotWithGetHotSpotBlock:(void (^ _Nullable)(KbqaHotSpotResult * _Nonnull))getHotSpotBlock;
-- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
-- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
-- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
-- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
+- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
+- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
+- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
+- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
+- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
+- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
+- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
+- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
 @end
 
 
@@ -645,6 +686,30 @@ SWIFT_CLASS("_TtC13KbqaHybridSDK27KbqaAnnouncementTitleResult")
 @property (nonatomic) NSInteger totalCount;
 @end
 
+@class KbqaLog;
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK17KbqaConfiguration")
+@interface KbqaConfiguration : NSObject
+- (KbqaConfiguration * _Nonnull)setConnectTimeoutWithRequestTimeoutInterval:(double)requestTimeoutInterval SWIFT_WARN_UNUSED_RESULT;
+- (KbqaConfiguration * _Nonnull)setSearchUrlWithSearchUrl:(NSString * _Nonnull)searchUrl SWIFT_WARN_UNUSED_RESULT;
+- (KbqaConfiguration * _Nonnull)setKbqaLogWithKbqaLog:(KbqaLog * _Nonnull)kbqaLog SWIFT_WARN_UNUSED_RESULT;
+- (double)getRequestTimeoutInterval SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)getSearchUrl SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK14KbqaFilterBean")
+@interface KbqaFilterBean : NSObject
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable date;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable category;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable institution;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable industry;
+- (nonnull instancetype)initWithDate:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 
 SWIFT_CLASS("_TtCC13KbqaHybridSDK17KbqaHotSpotResult15KbqaHotSpotItem")
 @interface KbqaHotSpotItem : NSObject
@@ -727,6 +792,19 @@ SWIFT_CLASS("_TtCC13KbqaHybridSDK27KbqaRecommendQuestionResult25KbqaRecommendQue
 @end
 
 
+SWIFT_CLASS("_TtC13KbqaHybridSDK25KbqaRelativeQuestionsBean")
+@interface KbqaRelativeQuestionsBean : NSObject
+@property (nonatomic, copy) NSString * _Nonnull question;
+@property (nonatomic, copy) NSString * _Nonnull type;
+@property (nonatomic) NSInteger pageNum;
+@property (nonatomic) NSInteger pageSize;
+@property (nonatomic, strong) KbqaFilterBean * _Nullable filter;
+- (nonnull instancetype)init:(NSString * _Nonnull)question :(NSString * _Nonnull)type :(NSInteger)pageNum :(NSInteger)pageSize :(KbqaFilterBean * _Nullable)filter OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS("_TtCC13KbqaHybridSDK31KbqaResearchReportFiguresResult29KbqaResearchReportFiguresItem")
 @interface KbqaResearchReportFiguresItem : NSObject
 @property (nonatomic, copy) NSString * _Nullable indexCategory;
@@ -777,18 +855,22 @@ SWIFT_CLASS_NAMED("KbqaSDKHybrid")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybrid * _Nonnull sharedInstance;)
 + (KbqaSDKHybrid * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, strong) KbqaConfiguration * _Nonnull kbqaConfiguration;
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret SWIFT_METHOD_FAMILY(none);
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock SWIFT_METHOD_FAMILY(none);
-- (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock kbqaLog:(KbqaLog * _Nullable)kbqaLog SWIFT_METHOD_FAMILY(none);
 - (NSString * _Nonnull)getRequestUrlWithQuestion:(NSString * _Nonnull)question SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)checkInit SWIFT_WARN_UNUSED_RESULT;
 - (void)getInputSuggestionsWithMaxCount:(NSInteger)maxCount inputString:(NSString * _Nonnull)inputString getSuggestQuestionBlock:(void (^ _Nullable)(KbqaSuggestQuestionResult * _Nonnull))getSuggestQuestionBlock;
 - (void)getRecommendQuestionWithGetRecommendQuestionBlock:(void (^ _Nullable)(KbqaRecommendQuestionResult * _Nonnull))getRecommendQuestionBlock;
 - (void)getHotSpotWithGetHotSpotBlock:(void (^ _Nullable)(KbqaHotSpotResult * _Nonnull))getHotSpotBlock;
-- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
-- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
-- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
-- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
+- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
+- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
+- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
+- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
+- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
+- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
+- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
+- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
 @end
 
 
@@ -1071,6 +1153,30 @@ SWIFT_CLASS("_TtC13KbqaHybridSDK27KbqaAnnouncementTitleResult")
 @property (nonatomic) NSInteger totalCount;
 @end
 
+@class KbqaLog;
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK17KbqaConfiguration")
+@interface KbqaConfiguration : NSObject
+- (KbqaConfiguration * _Nonnull)setConnectTimeoutWithRequestTimeoutInterval:(double)requestTimeoutInterval SWIFT_WARN_UNUSED_RESULT;
+- (KbqaConfiguration * _Nonnull)setSearchUrlWithSearchUrl:(NSString * _Nonnull)searchUrl SWIFT_WARN_UNUSED_RESULT;
+- (KbqaConfiguration * _Nonnull)setKbqaLogWithKbqaLog:(KbqaLog * _Nonnull)kbqaLog SWIFT_WARN_UNUSED_RESULT;
+- (double)getRequestTimeoutInterval SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)getSearchUrl SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK14KbqaFilterBean")
+@interface KbqaFilterBean : NSObject
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable date;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable category;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable institution;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable industry;
+- (nonnull instancetype)initWithDate:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 
 SWIFT_CLASS("_TtCC13KbqaHybridSDK17KbqaHotSpotResult15KbqaHotSpotItem")
 @interface KbqaHotSpotItem : NSObject
@@ -1153,6 +1259,19 @@ SWIFT_CLASS("_TtCC13KbqaHybridSDK27KbqaRecommendQuestionResult25KbqaRecommendQue
 @end
 
 
+SWIFT_CLASS("_TtC13KbqaHybridSDK25KbqaRelativeQuestionsBean")
+@interface KbqaRelativeQuestionsBean : NSObject
+@property (nonatomic, copy) NSString * _Nonnull question;
+@property (nonatomic, copy) NSString * _Nonnull type;
+@property (nonatomic) NSInteger pageNum;
+@property (nonatomic) NSInteger pageSize;
+@property (nonatomic, strong) KbqaFilterBean * _Nullable filter;
+- (nonnull instancetype)init:(NSString * _Nonnull)question :(NSString * _Nonnull)type :(NSInteger)pageNum :(NSInteger)pageSize :(KbqaFilterBean * _Nullable)filter OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS("_TtCC13KbqaHybridSDK31KbqaResearchReportFiguresResult29KbqaResearchReportFiguresItem")
 @interface KbqaResearchReportFiguresItem : NSObject
 @property (nonatomic, copy) NSString * _Nullable indexCategory;
@@ -1203,18 +1322,22 @@ SWIFT_CLASS_NAMED("KbqaSDKHybrid")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybrid * _Nonnull sharedInstance;)
 + (KbqaSDKHybrid * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, strong) KbqaConfiguration * _Nonnull kbqaConfiguration;
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret SWIFT_METHOD_FAMILY(none);
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock SWIFT_METHOD_FAMILY(none);
-- (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock kbqaLog:(KbqaLog * _Nullable)kbqaLog SWIFT_METHOD_FAMILY(none);
 - (NSString * _Nonnull)getRequestUrlWithQuestion:(NSString * _Nonnull)question SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)checkInit SWIFT_WARN_UNUSED_RESULT;
 - (void)getInputSuggestionsWithMaxCount:(NSInteger)maxCount inputString:(NSString * _Nonnull)inputString getSuggestQuestionBlock:(void (^ _Nullable)(KbqaSuggestQuestionResult * _Nonnull))getSuggestQuestionBlock;
 - (void)getRecommendQuestionWithGetRecommendQuestionBlock:(void (^ _Nullable)(KbqaRecommendQuestionResult * _Nonnull))getRecommendQuestionBlock;
 - (void)getHotSpotWithGetHotSpotBlock:(void (^ _Nullable)(KbqaHotSpotResult * _Nonnull))getHotSpotBlock;
-- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
-- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
-- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
-- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
+- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
+- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
+- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
+- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
+- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
+- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
+- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
+- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
 @end
 
 
@@ -1493,6 +1616,30 @@ SWIFT_CLASS("_TtC13KbqaHybridSDK27KbqaAnnouncementTitleResult")
 @property (nonatomic) NSInteger totalCount;
 @end
 
+@class KbqaLog;
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK17KbqaConfiguration")
+@interface KbqaConfiguration : NSObject
+- (KbqaConfiguration * _Nonnull)setConnectTimeoutWithRequestTimeoutInterval:(double)requestTimeoutInterval SWIFT_WARN_UNUSED_RESULT;
+- (KbqaConfiguration * _Nonnull)setSearchUrlWithSearchUrl:(NSString * _Nonnull)searchUrl SWIFT_WARN_UNUSED_RESULT;
+- (KbqaConfiguration * _Nonnull)setKbqaLogWithKbqaLog:(KbqaLog * _Nonnull)kbqaLog SWIFT_WARN_UNUSED_RESULT;
+- (double)getRequestTimeoutInterval SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)getSearchUrl SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK14KbqaFilterBean")
+@interface KbqaFilterBean : NSObject
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable date;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable category;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable institution;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable industry;
+- (nonnull instancetype)initWithDate:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 
 SWIFT_CLASS("_TtCC13KbqaHybridSDK17KbqaHotSpotResult15KbqaHotSpotItem")
 @interface KbqaHotSpotItem : NSObject
@@ -1575,6 +1722,19 @@ SWIFT_CLASS("_TtCC13KbqaHybridSDK27KbqaRecommendQuestionResult25KbqaRecommendQue
 @end
 
 
+SWIFT_CLASS("_TtC13KbqaHybridSDK25KbqaRelativeQuestionsBean")
+@interface KbqaRelativeQuestionsBean : NSObject
+@property (nonatomic, copy) NSString * _Nonnull question;
+@property (nonatomic, copy) NSString * _Nonnull type;
+@property (nonatomic) NSInteger pageNum;
+@property (nonatomic) NSInteger pageSize;
+@property (nonatomic, strong) KbqaFilterBean * _Nullable filter;
+- (nonnull instancetype)init:(NSString * _Nonnull)question :(NSString * _Nonnull)type :(NSInteger)pageNum :(NSInteger)pageSize :(KbqaFilterBean * _Nullable)filter OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS("_TtCC13KbqaHybridSDK31KbqaResearchReportFiguresResult29KbqaResearchReportFiguresItem")
 @interface KbqaResearchReportFiguresItem : NSObject
 @property (nonatomic, copy) NSString * _Nullable indexCategory;
@@ -1625,18 +1785,22 @@ SWIFT_CLASS_NAMED("KbqaSDKHybrid")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybrid * _Nonnull sharedInstance;)
 + (KbqaSDKHybrid * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, strong) KbqaConfiguration * _Nonnull kbqaConfiguration;
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret SWIFT_METHOD_FAMILY(none);
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock SWIFT_METHOD_FAMILY(none);
-- (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock kbqaLog:(KbqaLog * _Nullable)kbqaLog SWIFT_METHOD_FAMILY(none);
 - (NSString * _Nonnull)getRequestUrlWithQuestion:(NSString * _Nonnull)question SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)checkInit SWIFT_WARN_UNUSED_RESULT;
 - (void)getInputSuggestionsWithMaxCount:(NSInteger)maxCount inputString:(NSString * _Nonnull)inputString getSuggestQuestionBlock:(void (^ _Nullable)(KbqaSuggestQuestionResult * _Nonnull))getSuggestQuestionBlock;
 - (void)getRecommendQuestionWithGetRecommendQuestionBlock:(void (^ _Nullable)(KbqaRecommendQuestionResult * _Nonnull))getRecommendQuestionBlock;
 - (void)getHotSpotWithGetHotSpotBlock:(void (^ _Nullable)(KbqaHotSpotResult * _Nonnull))getHotSpotBlock;
-- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
-- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
-- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
-- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
+- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
+- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
+- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
+- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
+- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
+- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
+- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
+- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
 @end
 
 
@@ -1915,6 +2079,30 @@ SWIFT_CLASS("_TtC13KbqaHybridSDK27KbqaAnnouncementTitleResult")
 @property (nonatomic) NSInteger totalCount;
 @end
 
+@class KbqaLog;
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK17KbqaConfiguration")
+@interface KbqaConfiguration : NSObject
+- (KbqaConfiguration * _Nonnull)setConnectTimeoutWithRequestTimeoutInterval:(double)requestTimeoutInterval SWIFT_WARN_UNUSED_RESULT;
+- (KbqaConfiguration * _Nonnull)setSearchUrlWithSearchUrl:(NSString * _Nonnull)searchUrl SWIFT_WARN_UNUSED_RESULT;
+- (KbqaConfiguration * _Nonnull)setKbqaLogWithKbqaLog:(KbqaLog * _Nonnull)kbqaLog SWIFT_WARN_UNUSED_RESULT;
+- (double)getRequestTimeoutInterval SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)getSearchUrl SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC13KbqaHybridSDK14KbqaFilterBean")
+@interface KbqaFilterBean : NSObject
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable date;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable category;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable institution;
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable industry;
+- (nonnull instancetype)initWithDate:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 
 SWIFT_CLASS("_TtCC13KbqaHybridSDK17KbqaHotSpotResult15KbqaHotSpotItem")
 @interface KbqaHotSpotItem : NSObject
@@ -1997,6 +2185,19 @@ SWIFT_CLASS("_TtCC13KbqaHybridSDK27KbqaRecommendQuestionResult25KbqaRecommendQue
 @end
 
 
+SWIFT_CLASS("_TtC13KbqaHybridSDK25KbqaRelativeQuestionsBean")
+@interface KbqaRelativeQuestionsBean : NSObject
+@property (nonatomic, copy) NSString * _Nonnull question;
+@property (nonatomic, copy) NSString * _Nonnull type;
+@property (nonatomic) NSInteger pageNum;
+@property (nonatomic) NSInteger pageSize;
+@property (nonatomic, strong) KbqaFilterBean * _Nullable filter;
+- (nonnull instancetype)init:(NSString * _Nonnull)question :(NSString * _Nonnull)type :(NSInteger)pageNum :(NSInteger)pageSize :(KbqaFilterBean * _Nullable)filter OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS("_TtCC13KbqaHybridSDK31KbqaResearchReportFiguresResult29KbqaResearchReportFiguresItem")
 @interface KbqaResearchReportFiguresItem : NSObject
 @property (nonatomic, copy) NSString * _Nullable indexCategory;
@@ -2047,18 +2248,22 @@ SWIFT_CLASS_NAMED("KbqaSDKHybrid")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) KbqaSDKHybrid * _Nonnull sharedInstance;)
 + (KbqaSDKHybrid * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, strong) KbqaConfiguration * _Nonnull kbqaConfiguration;
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret SWIFT_METHOD_FAMILY(none);
 - (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock SWIFT_METHOD_FAMILY(none);
-- (void)initKbqaWithAppKey:(NSString * _Nonnull)appKey appSecret:(NSString * _Nonnull)appSecret kbqaInitBlock:(void (^ _Nullable)(BOOL))kbqaInitBlock kbqaLog:(KbqaLog * _Nullable)kbqaLog SWIFT_METHOD_FAMILY(none);
 - (NSString * _Nonnull)getRequestUrlWithQuestion:(NSString * _Nonnull)question SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)checkInit SWIFT_WARN_UNUSED_RESULT;
 - (void)getInputSuggestionsWithMaxCount:(NSInteger)maxCount inputString:(NSString * _Nonnull)inputString getSuggestQuestionBlock:(void (^ _Nullable)(KbqaSuggestQuestionResult * _Nonnull))getSuggestQuestionBlock;
 - (void)getRecommendQuestionWithGetRecommendQuestionBlock:(void (^ _Nullable)(KbqaRecommendQuestionResult * _Nonnull))getRecommendQuestionBlock;
 - (void)getHotSpotWithGetHotSpotBlock:(void (^ _Nullable)(KbqaHotSpotResult * _Nonnull))getHotSpotBlock;
-- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
-- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
-- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
-- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize date:(NSArray<NSString *> * _Nullable)date category:(NSArray<NSString *> * _Nullable)category institution:(NSArray<NSString *> * _Nullable)institution industry:(NSArray<NSString *> * _Nullable)industry queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
+- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
+- (void)queryAnnouncementTitleWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryAnnouncementTitleBlock:(void (^ _Nullable)(KbqaAnnouncementTitleResult * _Nonnull))queryAnnouncementTitleBlock;
+- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
+- (void)queryNewsContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryNewsContentBlock:(void (^ _Nullable)(KbqaNewsContentResult * _Nonnull))queryNewsContentBlock;
+- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
+- (void)queryResearchReportFiguresWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryResearchReportFiguresBlock:(void (^ _Nullable)(KbqaResearchReportFiguresResult * _Nonnull))queryResearchReportFiguresBlock;
+- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
+- (void)queryWechatSubscriptionContentWithQuestion:(NSString * _Nonnull)question type:(NSString * _Nonnull)type pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize filter:(KbqaFilterBean * _Nullable)filter queryWechatSubscriptionContentBlock:(void (^ _Nullable)(KbqaWechatSubscriptionContentResult * _Nonnull))queryWechatSubscriptionContentBlock;
 @end
 
 
